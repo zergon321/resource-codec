@@ -1,4 +1,4 @@
-module resource-codec
+module github.com/zergon321/resource-codec
 
 go 1.15
 
