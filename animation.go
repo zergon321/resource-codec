@@ -32,26 +32,26 @@ func AnimationDataToBytes(anim *AnimationData) ([]byte, error) {
 	buffer := bytes.NewBuffer([]byte{})
 
 	// Write the name of the spritesheet.
-	err := binary.Write(buffer, binary.BigEndian, int32(len(anim.spritesheet)))
+	err := binary.Write(buffer, binary.BigEndian, int32(len(anim.Spritesheet)))
 
 	if err != nil {
 		return nil, err
 	}
 
-	_, err = buffer.WriteString(anim.spritesheet)
+	_, err = buffer.WriteString(anim.Spritesheet)
 
 	if err != nil {
 		return nil, err
 	}
 
 	// Write the frame data.
-	err = binary.Write(buffer, binary.BigEndian, int32(len(anim.frames)))
+	err = binary.Write(buffer, binary.BigEndian, int32(len(anim.Frames)))
 
 	if err != nil {
 		return nil, err
 	}
 
-	for _, frame := range anim.frames {
+	for _, frame := range anim.Frames {
 		err = binary.Write(buffer, binary.BigEndian, frame.Min.X)
 
 		if err != nil {
@@ -78,7 +78,7 @@ func AnimationDataToBytes(anim *AnimationData) ([]byte, error) {
 	}
 
 	// Write the frame durations.
-	for _, duration := range anim.durations {
+	for _, duration := range anim.Durations {
 		err = binary.Write(buffer, binary.BigEndian, duration)
 
 		if err != nil {
@@ -168,8 +168,8 @@ func AnimationDataFromBytes(data []byte) (*AnimationData, error) {
 	}
 
 	return &AnimationData{
-		spritesheet: spritesheetName,
-		frames:      frames,
-		durations:   durations,
+		Spritesheet: spritesheetName,
+		Frames:      frames,
+		Durations:   durations,
 	}, nil
 }
