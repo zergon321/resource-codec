@@ -18,6 +18,7 @@ type AnimationData struct {
 // read from the YAML file.
 type AnimationMeta struct {
 	Name        string   `yaml:"name"`
+	Tag         string   `yaml:"tag"`
 	Spritesheet string   `yaml:"spritesheet"`
 	Frames      [][2]int `yaml:"frames"`
 }
